@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>student Form</title>
+
+    <style>
+        body {
+            background-color: #8BFC6F;
+        }
+        
+        input {
+            background-color: #EAFAF1;
+            color: blue;
+            width: 100%;
+            height: 35px;
+            font-size: 23px;
+        }
+        
+        h1 {
+            color: #030DE6;
+        }
+        
+        table {
+            border: 0px solid blue;
+            border-collapse: collapse;
+        }
+        
+        td {
+            border: 0px solid blue;
+            width: 400px;
+            height: 70px;
+            text-align: center;
+            font-size: 30px;
+            background-color: #cbb9b1;
+            color: blue;
+            text-align: left;
+            padding: 10px;
+        }
+        
+        span {
+            color: red;
+            font-size: 13px;
+            padding: 10px;
+        }
+        
+    </style>
+</head>
+<body>
+    <h1>Student Rgister Form</h1>
+    <table>
+        <form method="post" action="/addnew" onsubmit="return check()">
+            {% csrf_token %}
+            <tr>
+                <td> Name:<span>Name is only alphabet</span> </td>
+                <td>{{ form.name }} </td>
+            </tr>
+
+            <tr>
+                <td>Mobile: <span>mobile number is only 10 digit number</span></td>
+                <td>{{ form.mobile }} </td>
+            </tr>
+
+            <tr>
+                <td> Email:<span>fill correct email id(sk@gmail.com)</span> </td>
+                <td>{{ form.email }} </td>
+            </tr>
+
+            <tr>
+                <td colspan="2"><input type="submit" value="signup" /></td>
+            </tr>
+
+        </form>
+    </table>
+
+
+   <script>
+        function check() {
+            const name = document.querySelector('input[name="name"]');
+            const mobile = document.querySelector('input[name="mobile"]');
+            const email = document.querySelector('input[name="email"]');
+
+            // Validate name
+            if (name.value.trim() === "") {
+                alert("Please fill the name");
+                return false;
+            }
+
+            // Validate mobile (10 digits only)
+            if (mobile.value.trim() === "") {
+                alert("Please enter a valid 10-digit mobile number");
+                return false;
+            }
+
+            // Validate email (basic pattern)
+            if (email.value.trim() === "") {
+                alert("Please enter a valid email address");
+                return false;
+            }
+
+            return true; // Allow submission if all fields are valid
+        }
+    </script>
+</body>
+</html>
