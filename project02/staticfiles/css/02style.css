@@ -1,0 +1,15 @@
+.left-section {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.nav img {
+    height: 50px;
+    width: 80px;
+    /* Adjust icon size as needed */
+}
+
+h2 {
+    font-size: 24px;
+}
